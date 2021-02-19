@@ -5,7 +5,7 @@ package com.signalfx.azurefunctions.wrapper.test;
 
 import java.util.Map;
 
-import com.microsoft.azure.serverless.functions.ExecutionContext;
+import com.microsoft.azure.functions.ExecutionContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.signalfx.azurefunctions.wrapper.MetricSender;
