@@ -34,18 +34,25 @@ Wrap the code inside the handler as followed:
 ```java
 import com.signalfx.azurefunctions.wrapper.MetricWrapper;
 
-@FunctionName("Hello-SignalFx")
-public HttpResponseMessage<String> hello(HttpRequestMessage<Optional<String>> request,
-                final ExecutionContext context) {
-        MetricWrapper wrapper = new MetricWrapper(context);
-            ...
-            // your code
-            ...
-        } catch (Exception e) {
-          wrapper.error();
-        } finally {
-          wrapper.close();
-        }
+public class Function {
+    @FunctionName("Hello-SignalFx")
+      @HttpTrigger(
+          name = "req",
+          methods = {HttpMethod.GET, HttpMethod.POST},
+          authLevel = AuthorizationLevel.ANONYMOUS)
+          HttpRequestMessage<Optional<String>> request,
+          final ExecutionContext context) {
+              context.getLogger().info("Java HTTP trigger processed a request.");
+              try (MetricWrapper wrapper = new MetricWrapper(context)) {
+                  ...
+                  // your code
+                  ...
+              } catch (Exception e) {
+                wrapper.error();
+              } finally {
+                wrapper.close();
+              }
+      }
 }
 ```
 
