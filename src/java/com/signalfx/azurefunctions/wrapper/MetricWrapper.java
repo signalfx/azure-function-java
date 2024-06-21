@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-import com.microsoft.azure.serverless.functions.ExecutionContext;
+import com.microsoft.azure.functions.ExecutionContext;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.signalfx.metrics.auth.StaticAuthToken;
